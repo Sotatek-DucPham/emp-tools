@@ -33,6 +33,9 @@ export const Contracts: { [networkId: number]: ContractArguments[] } = {
     ["0x3d7d563F4679C750e462Eae4271d2bd84dF66060", "EMP", "1"], // uUSDrETH Kovan Nov20
     ["0x95b597b6fa71f9f42a93b83149b4d835a6176596", "EMP", "2"], // uUSDrETHname Kovan
   ],
+  4: [
+    ["0x30E0bf549A88086d3e494932Fc1A8f6f74fF863F", "EMP", "2"], // Test rinkeby version 2
+  ],
 };
 
 export const getByAddress = (address: string, network: number) => {

@@ -48,10 +48,15 @@ function useContract() {
 
   useEffect(() => {
     if (signer && network) {
+      let wethInUse = weth.address;
+      if (network.chainId === 42) {
+        wethInUse = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
+      } else if (network.chainId === 4) {
+        wethInUse = "0xc778417e063141139fce010982780140aa0cd5ab";
+      }
+
       const instance = new ethers.Contract(
-        network.chainId === 42
-          ? "0xd0a1e359811322d97991e03f863a0c30c2cf029c"
-          : weth.address, // Uses Kovan WETH contract if on Kovan, otherwise Mainnet WETH contract
+        wethInUse, // Uses Kovan WETH contract if on Kovan, otherwise Mainnet WETH contract
         weth.abi,
         signer
       );
