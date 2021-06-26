@@ -37,7 +37,7 @@ export const Contracts: { [networkId: number]: ContractArguments[] } = {
     ["0x30E0bf549A88086d3e494932Fc1A8f6f74fF863F", "EMP", "2"], // Test rinkeby version 2
   ],
   11: [
-    ["0x257d67961376680D52D2bA800a2e74E170D3f917", "EMP", "2"], // Test halongbay version 2
+    ["0xa72E3F9a9c4DC74ec91741a6FEBd1A2b0F672414", "EMP", "2"], // Test halongbay version 2
   ],
 };
 
