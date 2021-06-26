@@ -53,6 +53,8 @@ function useContract() {
         wethInUse = "0xd0a1e359811322d97991e03f863a0c30c2cf029c";
       } else if (network.chainId === 4) {
         wethInUse = "0xc778417e063141139fce010982780140aa0cd5ab";
+      } else if (network.chainId === 11) {
+        wethInUse = "0xf3cF78F09Ef1dF5Ea87BA39d6513AB4242C37E4f";
       }
 
       const instance = new ethers.Contract(
