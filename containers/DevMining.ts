@@ -35,35 +35,37 @@ const useDevMiningCalculator = () => {
       });
   }, []);
 
-  useEffect(() => {
-    if (provider == null) return;
-    if (empWhitelist == null) return;
-    if (totalRewards == null) return;
-    if (error) setError(null);
-    // we dont want to run this if a perp is selected, at least for now
-    if (contract && contract.type.toLowerCase() == "perpetual") return;
-    // only run this once. allow user to retry by switching contracts
-    if (devMiningRewards) return;
-    const devMiningCalculator = DevMiningCalculator({
-      ethers,
-      getPrice: getSimplePriceByContract,
-      erc20Abi: getAbi("erc20"),
-      empAbi: getAbi("emp"),
-      provider,
-    });
-    setCalculator(devMiningCalculator);
+  // TBD: disable because only work on ETH mainnet
+  // TODO: can enable if change empWhitelist
+  // useEffect(() => {
+  //   if (provider == null) return;
+  //   if (empWhitelist == null) return;
+  //   if (totalRewards == null) return;
+  //   if (error) setError(null);
+  //   // we dont want to run this if a perp is selected, at least for now
+  //   if (contract && contract.type.toLowerCase() == "perpetual") return;
+  //   // only run this once. allow user to retry by switching contracts
+  //   if (devMiningRewards) return;
+  //   const devMiningCalculator = DevMiningCalculator({
+  //     ethers,
+  //     getPrice: getSimplePriceByContract,
+  //     erc20Abi: getAbi("erc20"),
+  //     empAbi: getAbi("emp"),
+  //     provider,
+  //   });
+  //   setCalculator(devMiningCalculator);
 
-    devMiningCalculator
-      .estimateDevMiningRewards({
-        totalRewards,
-        empWhitelist,
-      })
-      .then((rewards) => setRewards(new Map(rewards)))
-      .catch((err) => {
-        setError(err);
-        console.error(err, "Error calculating dev mining rewards");
-      });
-  }, [provider, totalRewards, empWhitelist, contract]);
+  //   devMiningCalculator
+  //     .estimateDevMiningRewards({
+  //       totalRewards,
+  //       empWhitelist,
+  //     })
+  //     .then((rewards) => setRewards(new Map(rewards)))
+  //     .catch((err) => {
+  //       setError(err);
+  //       console.error(err, "Error calculating dev mining rewards");
+  //     });
+  // }, [provider, totalRewards, empWhitelist, contract]);
 
   return {
     error,
